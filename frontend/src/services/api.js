@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const rawBase = import.meta.env.VITE_API_URL || '/api';
+const DEFAULT_PROD_URL = 'https://scenepass-api.onrender.com';
+const rawBase = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? DEFAULT_PROD_URL : '/api');
 const API_BASE = rawBase.endsWith('/api') ? rawBase : (rawBase === '/api' ? '/api' : `${rawBase.replace(/\/$/, '')}/api`);
 
 const api = axios.create({
